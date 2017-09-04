@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <style>
+    :root {
+      --sizebar-width: 200px;
+      --topbar-height: 60px;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+    }
+    a,
+    a:visited {
+      text-decoration: none;
+      color: #2196f3;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      height: var(--topbar-height);
+      left: 0;
+      right: 0;
+      background: #81D4FA;
+    }
+    main {
+      position: absolute;
+      top: var(--topbar-height);
+      bottom: 0;
+      left: var(--sizebar-width);
+      right: 0;
+      background: #f5f5f5;
+    }
+    main > article {
+      display: none;
+    }
+    main > article.show {
+      display: block;
+    }
+    article {
+    }
+    header {
+      padding: 15px;
+      background: white;
+      margin-bottom: 15px;
+      box-shadow: 0 1px 2px #ddd;
+    }
+    section {
+      padding: 15px;
+      margin: 15px;
+      background: white;
+      box-shadow: 0 1px 2px #ddd;
+    }
+    aside {
+      position: fixed;
+      top: var(--topbar-height);
+      bottom: 0;
+      width: var(--sizebar-width);
+      background-color: #2196f3;
+    }
+    aside ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    #page-links a {
+      display: block;
+      padding: 8px 16px;
+      color: white;
+    }
+    #page-links li a:focus {
+      background: #03a9f4;
+    }
+    #page-links > li > a {
+      line-height: 40px;
+      font-size: 1.2em;
+    }
+    #page-links li ul {
+      display: none;
+      background: #1976d2;
+    }
+    #page-links li ul li a {
+      padding-left: 24px;
+    }
+    #page-links li.selected > a {
+      font-weight: bold;
+    }
+    #page-links li.selected > ul {
+      display: block !important;
+    }
+    </style>
+    <script src="src/pages-api.js"></script>
+    <nav></nav>
+    <main>
+        <article id="/page1" title="Page 1">
+            <header>
+                <h2>Page 1</h2>
+            </header>
+            <section>
+            This is the section for Page 1.
+            </section>
+        </article>
+        <article id="/page2" title="Page 2" data-no-content="true"></article>
+        <article id="/page2/1" title="Page 2.1" data-no-content="true"></article>
+        <article id="/page2/1/1" title="Page 2.1.1">
+            <header>
+                <h2>Page 2.1.1</h2>
+            </header>
+            <section>
+            This is the section for Page 2.1.1.
+            </section>
+        </article>
+        <article id="/page2/1/2" title="Page 2.1.2">
+            <header>
+                <h2>Page 2.1.2</h2>
+            </header>
+            <section>
+            This is the section for Page 2.1.2.
+            </section>
+        </article>
+        <article id="/page2/2" title="Page 2.2">
+            <header>
+                <h2>Page 2.2</h2>
+            </header>
+            <section>
+            This is the section for Page 2.2.
+            </section>
+        </article>
+        <article id="/page3" title="Page 3">
+            <header>
+                <h2>Page 3</h2>
+            </header>
+            <section>
+            This is the section for Page 3.
+            </section>
+        </article>
+    </main>
+    <aside>
+        <ul id="page-links">
+            <li><i></i><a></a></li>
+        </ul>
+    </aside>
+    <script>PageApi('page-links', 'main > article', '/page1')</script>
+</html>
